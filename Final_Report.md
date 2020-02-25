@@ -87,7 +87,9 @@ First of all I removed all null values and then get rid of unwanted columns and 
 <p align="justify">For visualization purposes, the geographical data is plotted. Each color represents the cluster for which that neighborhood belongs. This image is shown below.</p>
 <p align="center">
   <img src="https://github.com/ckaparakis/Coursera_Capstone/blob/master/pictures/map1.png" title="hover text" width="350">
-  <img src="https://github.com/ckaparakis/Coursera_Capstone/blob/master/pictures/map2.png" title="hover text" width="350">
+</p>
+<p align="center">
+<img src="https://github.com/ckaparakis/Coursera_Capstone/blob/master/pictures/map2.png" title="hover text" width="350">
 </p>
 <p align="justify">It is possible to see which neighborhoods within London have very high house prices, for example Westminster and Kensington. We can clearly see that the house prices in the downtown and with Hotels and Social venues nearby are very high while in the suburbs and the neighborhoods away from the city center have low prices but the facilities are also good.</p>
 <h2 id="discussion">5. Discussion</h2>
