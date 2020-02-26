@@ -93,17 +93,17 @@ First of all I removed all null values and then get rid of unwanted columns and 
 </p>
 <p align="justify">It is possible to see which neighborhoods within London have very high house prices, for example Westminster and Kensington. We can clearly see that the house prices in the downtown and with Hotels and Social venues nearby are very high while in the suburbs and the neighborhoods away from the city center have low prices but the facilities are also good.</p>
 <h2 id="discussion">5. Discussion</h2>
-<p align="justify">It is worth to note that this work is useful only for those who live in Manhattan, New York or in the neighborhoods near the center of Toronto. The reason is because there is a limited amount of data we can request using de Foursquare API. Consequently, it will has a greater cost than the Lite version.</p>
-<p align="justify">Moreover, there is a cluster with one neighborhood. In the results we found out that this cluster has a frequency of 1 in garden places. This means the cluster is not segmenting correctly data and the centroid is located in the exact position of that neighborhood. This neighborhood has a high frequency of garden places around. Hence, we can say the algorithm is doing great since there is no other cluster with similar venues around.</p>
+<p align="justify">It is worth noting that this work is useful only for those who live in or work to move to the city of London.</p>
+<p align="justify">Moreover, it is no news that London is a big and vibrant city, with interesting places to have nearby in every one of its boroughs. That is a big plus for every future house buyer, because it gives them the opportunity to choose from a lot of different price ranges according to their budget.</p>
 <h2 id="conclusion">6. Conclusion</h2>
 <p align="justify">In this project a a city's neighborhoods have been clustered in order to help future buyers to target their research for a new house, in places where it is not extremely expensive but also has a lot of social venues. This involves the neighborhoods London. The data is downloaded and the venues around the neighborhoods is adquired using the Foursquare API. One Hot Encoding is used for converting the categories of the venues into a feature matrix. Then, all venues are grouped by neighborhoods and at the same time the mean is calculated. Hence, the resulting features used are the frequency of occurrence from each category in a neighborhood.</p>
 <p align="justify">The K-Means clustering algorithm is used for finding similiraties between all the neighborhoods listed in the feature matrix. The elbow method is used for selecting the appropriate number of clusters. The K selected is 5, resulting in 5 different clusters of neighborhoods. Their names are the following:</p>
 <p><strong>Cluster</strong></p>
 <ul>
-<li>I: Neighborhoods that have around parks, bus lines and sandwich places.</li>
-<li>II: Neighborhoods that have around parks, playgrounds and trails.</li>
-<li>III: Neighborhoods that have around coffee shops, pubs and italian restaurants.</li>
-<li>IV: Neighborhood that have around gardens.</li>
-<li>V: Neighborhoods that have around coffee shops, parks and bakeries.</li>
+<li>I: Neighborhoods that have around pubs and stores.</li>
+<li>II: Neighborhoods that have around hotels and lots of different social venues.</li>
+<li>III: Neighborhoods that have around grocery stores.</li>
+<li>IV: Neighborhood that have around Restaurants and Cafes</li>
+<li>V: Neighborhoods that have around  parks and things to do outdoors.</li>
 </ul>
 
