@@ -19,7 +19,7 @@
 <li>For chloropleth maps we will use .geojson file of London. (<a href="https://joshuaboyd1.carto.com/tables/london_boroughs_proper/public">https://joshuaboyd1.carto.com/tables/london_boroughs_proper/public</a>)</li>
 </ul>
 <p align="justify">The data downloaded are the boroughs located in London. Moreover, their specific coordinates are merged. A Foursquare API request is sent in order to aqquire the surrounding venues within a radius of 500m. The data is formated using one hot encoding with the categories of each venue. Therefore, each feature is a category that belongs to a venue. Each feature becomes binary, this means that 1 means this category is found in the venue and 0 means the opposite. Then, the venues are grouped by boroughs computing the mean of each feature.</p>
-<p align="justify">The similarities will be determined based on the frequency of the categories found in the neighborhoods. These similarities found are a strong indicator for a user and can help him to decide whether to move in a particular neighborhood near the center of Toronto or not. </p>
+<p align="justify">The similarities will be determined based on the frequency of the categories found in the neighborhoods. These similarities found are a strong indicator for a user and can help him to decide whether to move in a particular neighborhood near the center of London or not. </p>
 <h3 id="data-preprocessing">2.1.  Data Preprocessing</h3>
 <p align="center">
   <img src="https://github.com/ckaparakis/Coursera_Capstone/blob/master/pictures/uncleanwiki.jpeg" title="hover text" width="350">
