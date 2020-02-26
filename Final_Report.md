@@ -30,13 +30,13 @@
   <img src="https://github.com/ckaparakis/Coursera_Capstone/blob/master/pictures/uncleanedavgpr.png" title="hover text" width="350">
 </p>
 <p align="justify">First of all we will remove all null values and then get rid of unwanted columns and only kept ‘Area’ and ‘Avg price’ columns. Then ‘Avg Price’ columns contains string so we will process it to make it an integer by removing pound sign and comma.</p><p>
-</p><p align="justify">After cleaning two tables we will perform inner join and merge them. Then by using geocoder library we can find the Longitudes and Latitudes of the Location and add a column of each in my dataframe.</p><p>
-</p><p align="justify">We will use python folium library to visualize geographic details of London and its boroughs and create a map of London with boroughs superimposed on top. Latitude and longitude values were used to get the below visual:</p><p>
-</p><p align="center">
+</p><p>After cleaning two tables we will perform inner join and merge them. Then by using <strong>geocoder</strong> library we can find the Longitudes and Latitudes of the Location and add a column of each in my dataframe.</p>
+<p>We will use python <strong>folium</strong> library to visualize geographic details of London and its boroughs and create a map of London with boroughs superimposed on top. Latitude and longitude values were used to get the below visual:</p>
+<p align="center">
   <img src="https://github.com/ckaparakis/Coursera_Capstone/blob/master/pictures/map.png" title="hover text" width="350">
 </p>
-<p align="justify">By utilizing the Foursquare API we will explore the boroughs and segment them. We set the limit as 100 venues and the radius as 500 meter for each borough from their given latitude and longitude information. Here is the first five rows of the list **london_venues** with the columns **Neighborhood**, **Neighborhood Latitude** and **Neighborhood Longitude** coming from our earlier dataset and **name**, **category**, **latitude** and **longitude** from Foursquare API.</p><p>
-</p><p align="justify">By getting the number of venues for every Neighborhood, we have the following dataset:</p><p>
+<p>By utilizing the Foursquare API we will explore the boroughs and segment them. We set the limit as 100 venues and the radius as 500 meter for each borough from their given latitude and longitude information. Here is the first five rows of the list london_venues with the columns <strong>Neighborhood</strong>, <strong>Neighborhood Latitude</strong> and <strong>Neighborhood Longitude</strong> coming from our earlier dataset and <strong>name</strong>, <strong>category</strong>, <strong>latitude</strong> and <strong>longitude</strong> from Foursquare API.</p>
+<p align="justify">By getting the number of venues for every Neighborhood, we have the following dataset:</p><p>
 </p><p align="center">
   <img src="https://github.com/ckaparakis/Coursera_Capstone/blob/master/pictures/neighvencount.png" title="hover text" width="350">
 </p>
