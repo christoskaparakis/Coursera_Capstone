@@ -6,42 +6,42 @@
 <h1 id="p-aligncenter-real-estate-prices--venues-data-analysis-of-london-p"><p align="center"> Real Estate Prices &amp; Venues Data Analysis of London </p></h1>
 <h3 id="p-aligncenter-author-christos-kaparakisp"><p align="center"> Author: Christos Kaparakis</p></h3>
 <h2 id="introduction">1. Introduction</h2>
-<p align="justify">Recently, Machine Learning (ML) algorithms are widely used in the study of data instead of traditional statistics. ML algorithms bring advantages because they offer solutions to problems related to the big quantities of data and set fewer constraints than traditional statistics. In particular, unsupervised learning algorithms are used to find patterns in data in terms of similarity between samples. Depending on the pattern within the data, different algorithms are used. For non-convex data it is used Density-Based Spatial Clustering (DBScan). On the other hand, for convex data it is used a well known algorithm as K-Means. </p>
-<p align="justify"> London is a city with a high population and population density. As from Real Estate investor point of view we want to invest in such places were the housing prices are low and the facilities (shops, restaurants, parks, hotels, etc.) and social venues are nearby. Keeping above things in mind it is very difficult for an individual to find such place in such big city and gather this much information. When we consider all these problems, we can create a map and information chart where the real estate index is placed on London and each district is clustered according to the venue density.</p>
+<p align="justify">Recently, Machine Learning (ML) algorithms are widely used in the study of data instead of traditional statistics. ML algorithms bring many advantages because they can offer solutions to problems related to big amounts of data and set fewer constraints than traditional statistics. In particular, unsupervised learning algorithms are used to find patterns in data in terms of similarity between samples. Depending on the pattern within the data, different algorithms are used. </p>
+<p align="justify"> London is a city with a high population and population density. As from a Real Estate investor point of view we want to invest in such places where the housing prices are low and the facilities (shops, restaurants, parks, hotels, etc.) and social venues are nearby. Keeping above things in mind it is very difficult for an individual to find such place in such big city and gather this much information. When we consider all these problems, we can create a map and information chart where the real estate index is placed on London and each district is clustered according to the venue density.</p>
 <p align="justify">Foursquare is a website where people comment and rank food sites, coffee sites, malls and parks. Foursquare location data along with a clustering algorithm can suggest a neighborhood in order to help a person choose a place to live. For instance, let's think of a person that wants to buy a house in London. We can gather the average prices of houses in different neighborhoods of London, and combined with our knowledge from Foursquare we can suggest a neighborhood to focus on. The neighborhood that will be suggested, will not be a random suggestion, but instead will be a place for his pleasure. Thus, previous data from London will be used to predict a good living neighborhood for him.</p>
 <h2 id="data">2. Data</h2>
 <h3 id="data-collection">2.1.  Data Collection</h3>
 <p align="justify">The data that will be used to adress the avobe problem are: </p>
 <ul>
 <li>List of areas of London was found with its boroughs and postcodes from Wikipedia. (<a href="https://en.wikipedia.org/wiki/List_of_areas_of_London">https://en.wikipedia.org/wiki/List_of_areas_of_London</a>)</li>
-<li>For housing prices, I found a website where latest London house prices were available with the postal codes.  (<a href="https://propertydata.co.uk/cities/london">https://propertydata.co.uk/cities/london</a>)</li>
+<li>For housing prices, we will scrap a website where latest London house prices were available with the postal codes.  (<a href="https://propertydata.co.uk/cities/london">https://propertydata.co.uk/cities/london</a>)</li>
 <li>Forsquare API will be used to get the most common venues of given Borough of London.</li>
-<li>For chloropleth maps I used .geojson file of London. (<a href="https://joshuaboyd1.carto.com/tables/london_boroughs_proper/public">https://joshuaboyd1.carto.com/tables/london_boroughs_proper/public</a>)</li>
+<li>For chloropleth maps we will use .geojson file of London. (<a href="https://joshuaboyd1.carto.com/tables/london_boroughs_proper/public">https://joshuaboyd1.carto.com/tables/london_boroughs_proper/public</a>)</li>
 </ul>
-<p align="justify">The data downloaded are the boroughs located in London. Moreover, their specific coordinates are merged. A Foursquare API GET request is sent in order to adquire the surrounds venues that are within a radius of 500m. The data is formated using one hot encoding with the categories of each venue. Then, the venues are grouped by neighborhoods computing the mean of each feature.</p>
+<p align="justify">The data downloaded are the boroughs located in London. Moreover, their specific coordinates are merged. A Foursquare API request is sent in order to aqquire the surrounding venues within a radius of 500m. The data is formated using one hot encoding with the categories of each venue. Therefore, each feature is a category that belongs to a venue. Each feature becomes binary, this means that 1 means this category is found in the venue and 0 means the opposite. Then, the venues are grouped by boroughs computing the mean of each feature.</p>
 <p align="justify">The similarities will be determined based on the frequency of the categories found in the neighborhoods. These similarities found are a strong indicator for a user and can help him to decide whether to move in a particular neighborhood near the center of Toronto or not. </p>
 <h3 id="data-preprocessing">2.1.  Data Preprocessing</h3>
 <p align="center">
   <img src="https://github.com/ckaparakis/Coursera_Capstone/blob/master/pictures/uncleanwiki.jpeg" title="hover text" width="350">
 </p>
-The data scraped from Wikipedia has to be cleaned. I dropped ‘Dial Code’ and ’OS grid ref’ columns as they were of no use, removed all the hyperlinks and there are more than one Postal codes for some Locations so I kept only one Postal code.
-<p>For the next table of average housing prices the data initially looked like this:</p>
-<p align="center">
+<p align="justify">The data scraped from Wikipedia has to be cleaned. I dropped ‘Dial Code’ and ’OS grid ref’ columns as they were of no use, removed all the hyperlinks and there are more than one Postal codes for some Locations so I kept only one Postal code.</p><p>
+</p><p align="justify">For the next table of average housing prices the data initially looked like this:</p><p>
+</p><p align="center">
   <img src="https://github.com/ckaparakis/Coursera_Capstone/blob/master/pictures/uncleanedavgpr.png" title="hover text" width="350">
 </p>
-First of all I removed all null values and then get rid of unwanted columns and only kept ‘Area’ and ‘Avg price’ columns. Then ‘Avg Price’ columns contains string so I processed it to make integer by removing pound sign and comma.
-<p>After cleaning two tables I performed inner join and merged them. Then by using geocoder library I find the Longitudes and Latitudes of the Location and add a columns of each in my dataframe.</p>
-<p>I used python <strong>folium</strong> library to visualize geographic details of London and its boroughs and I created a map of London with boroughs superimposed on top. I used latitude and longitude values to get below visual:</p>
-<p align="center">
+<p align="justify">First of all I removed all null values and then get rid of unwanted columns and only kept ‘Area’ and ‘Avg price’ columns. Then ‘Avg Price’ columns contains string so I processed it to make integer by removing pound sign and comma.</p><p>
+</p><p align="justify">After cleaning two tables I performed inner join and merged them. Then by using geocoder library I find the Longitudes and Latitudes of the Location and add a columns of each in my dataframe.</p><p>
+</p><p align="justify">I used python **folium** library to visualize geographic details of London and its boroughs and I created a map of London with boroughs superimposed on top. I used latitude and longitude values to get below visual:</p><p>
+</p><p align="center">
   <img src="https://github.com/ckaparakis/Coursera_Capstone/blob/master/pictures/map1.png" title="hover text" width="350">
 </p>
-<p>I utilized the Foursquare API to explore the boroughs and segment them. I designed the limit as 100 venue and the radius 500 meter for each borough from their given latitude and longitude information. Here is the first five rows of the list <strong>london_venues</strong> with the columns <strong>Neighborhood</strong>, <strong>Neighborhood Latitude</strong> and <strong>Neighborhood Longitude</strong> coming from our earlier dataset and <strong>name</strong>, <strong>category</strong>, <strong>latitude</strong> and <strong>longitude</strong> from Foursquare API.</p>
-<p>By getting the number of venues for every Neighborhood, we have the following dataset:</p>
-<p align="center">
+<p align="justify">I utilized the Foursquare API to explore the boroughs and segment them. I designed the limit as 100 venue and the radius 500 meter for each borough from their given latitude and longitude information. Here is the first five rows of the list **london_venues** with the columns **Neighborhood**, **Neighborhood Latitude** and **Neighborhood Longitude** coming from our earlier dataset and **name**, **category**, **latitude** and **longitude** from Foursquare API.</p><p>
+</p><p align="justify">By getting the number of venues for every Neighborhood, we have the following dataset:</p><p>
+</p><p align="center">
   <img src="https://github.com/ckaparakis/Coursera_Capstone/blob/master/pictures/neighvencount.png" title="hover text" width="350">
 </p>
-<p>And finally, here is the dataset with the top 10 venues for every neighborhood:</p>
-<p align="center">
+<p align="justify">And finally, here is the dataset with the top 10 venues for every neighborhood:</p><p>
+</p><p align="center">
   <img src="https://github.com/ckaparakis/Coursera_Capstone/blob/master/pictures/top10ven.png" title="hover text" width="350">
 </p>
 <h2 id="methodology">3. Methodology</h2>
