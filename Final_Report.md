@@ -1,11 +1,14 @@
 ---
 
+
+---
+
 <h1 id="p-aligncenter-real-estate-prices--venues-data-analysis-of-london-p"><p align="center"> Real Estate Prices &amp; Venues Data Analysis of London </p></h1>
 <h3 id="p-aligncenter-author-christos-kaparakisp"><p align="center"> Author: Christos Kaparakis</p></h3>
 <h2 id="introduction">1. Introduction</h2>
 <p align="justify">Recently, Machine Learning (ML) algorithms are widely used in the study of data instead of traditional statistics. ML algorithms bring many advantages because they can offer solutions to problems related to big amounts of data and set fewer constraints than traditional statistics. In particular, unsupervised learning algorithms are used to find patterns in data in terms of similarity between samples. Depending on the pattern within the data, different algorithms are used. </p>
 <p align="justify"> London is a city with a high population and population density. As from a Real Estate investor point of view we want to invest in such places where the housing prices are low and the facilities (shops, restaurants, parks, hotels, etc.) and social venues are nearby. Keeping above things in mind it is very difficult for an individual to find such place in such big city and gather this much information. When we consider all these problems, we can create a map and information chart where the real estate index is placed on London and each district is clustered according to the venue density.</p>
-<p align="justify">Foursquare is a website where people comment and rank food sites, coffee sites, malls and parks. Foursquare location data along with a clustering algorithm can suggest a neighborhood in order to help a person choose a place to live. For instance, let's think of a person that wants to buy a house in London. We can gather the average prices of houses in different neighborhoods of London, and combined with our knowledge from Foursquare we can suggest a neighborhood to focus on. The neighborhood that will be suggested, will not be a random suggestion, but instead will be a place for their pleasure. Thus, previous data from London will be used to predict a good living neighborhood for them.</p>
+<p align="justify">Foursquare is a website where people comment and rank food sites, coffee sites, malls and parks. Foursquare location data along with a clustering algorithm can suggest a neighborhood in order to help a person choose a place to live. For instance, let's think of a person that wants to buy a house in London. We can gather the average prices of houses in different neighborhoods of London, and combined with our knowledge from Foursquare we can suggest a neighborhood to focus on. The neighborhood that will be suggested, will not be a random suggestion, but instead will be a place for his pleasure. Thus, previous data from London will be used to predict a good living neighborhood for him.</p>
 <h2 id="data">2. Data</h2>
 <h3 id="data-collection">2.1.  Data Collection</h3>
 <p align="justify">The data that will be used to adress the avobe problem are: </p>
@@ -17,7 +20,7 @@
 </ul>
 <p align="justify">The data downloaded are the boroughs located in London. Moreover, their specific coordinates are merged. A Foursquare API request is sent in order to aqquire the surrounding venues within a radius of 500m. The data is formated using one hot encoding with the categories of each venue. Then, the venues are grouped by boroughs computing the mean of each feature.</p>
 <p align="justify">The similarities will be determined based on the frequency of the categories found in the neighborhoods. These similarities found are a strong indicator for a user and can help him to decide whether to move in a particular neighborhood near the center of London or not. </p>
-<h3 id="data-preprocessing">2.2.  Data Preprocessing</h3>
+<h3 id="data-preprocessing">2.1.  Data Preprocessing</h3>
 <p align="center">
   <img src="https://github.com/ckaparakis/Coursera_Capstone/blob/master/pictures/uncleanwiki.jpeg" title="hover text" width="350">
 </p>
@@ -28,9 +31,9 @@
 </p>
 <p align="justify">First of all we will remove all null values and then get rid of unwanted columns and only kept ‘Area’ and ‘Avg price’ columns. Then ‘Avg Price’ columns contains string so we will process it to make it an integer by removing pound sign and comma.</p><p>
 </p><p align="justify">After cleaning two tables we will perform inner join and merge them. Then by using geocoder library we can find the Longitudes and Latitudes of the Location and add a column of each in my dataframe.</p><p>
-</p><p align="justify">We will use python **folium** library to visualize geographic details of London and its boroughs and create a map of London with boroughs superimposed on top. Latitude and longitude values were used to get the below visual:</p><p>
+</p><p align="justify">We will use python folium library to visualize geographic details of London and its boroughs and create a map of London with boroughs superimposed on top. Latitude and longitude values were used to get the below visual:</p><p>
 </p><p align="center">
-  <img src="https://github.com/ckaparakis/Coursera_Capstone/blob/master/pictures/map1.png" title="hover text" width="350">
+  <img src="https://github.com/ckaparakis/Coursera_Capstone/blob/master/pictures/map.png" title="hover text" width="350">
 </p>
 <p align="justify">By utilizing the Foursquare API we will explore the boroughs and segment them. We set the limit as 100 venues and the radius as 500 meter for each borough from their given latitude and longitude information. Here is the first five rows of the list **london_venues** with the columns **Neighborhood**, **Neighborhood Latitude** and **Neighborhood Longitude** coming from our earlier dataset and **name**, **category**, **latitude** and **longitude** from Foursquare API.</p><p>
 </p><p align="justify">By getting the number of venues for every Neighborhood, we have the following dataset:</p><p>
