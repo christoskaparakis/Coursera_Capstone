@@ -18,24 +18,24 @@
 <li>Forsquare API will be used to get the most common venues of given Borough of London.</li>
 <li>For chloropleth maps we will use .geojson file of London. (<a href="https://joshuaboyd1.carto.com/tables/london_boroughs_proper/public">https://joshuaboyd1.carto.com/tables/london_boroughs_proper/public</a>)</li>
 </ul>
-<p align="justify">The data downloaded are the boroughs located in London. Moreover, their specific coordinates are merged. A Foursquare API request is sent in order to aqquire the surrounding venues within a radius of 500m. The data is formated using one hot encoding with the categories of each venue. Therefore, each feature is a category that belongs to a venue. Each feature becomes binary, this means that 1 means this category is found in the venue and 0 means the opposite. Then, the venues are grouped by boroughs computing the mean of each feature.</p>
+<p align="justify">The data downloaded are the boroughs located in London. Moreover, their specific coordinates are merged. A Foursquare API request is sent in order to aqquire the surrounding venues within a radius of 500m. The data is formated using one hot encoding with the categories of each venue. Then, the venues are grouped by boroughs computing the mean of each feature.</p>
 <p align="justify">The similarities will be determined based on the frequency of the categories found in the neighborhoods. These similarities found are a strong indicator for a user and can help him to decide whether to move in a particular neighborhood near the center of London or not. </p>
 <h3 id="data-preprocessing">2.1.  Data Preprocessing</h3>
 <p align="center">
   <img src="https://github.com/ckaparakis/Coursera_Capstone/blob/master/pictures/uncleanwiki.jpeg" title="hover text" width="350">
 </p>
-<p align="justify">The data scraped from Wikipedia has to be cleaned. I dropped ‘Dial Code’ and ’OS grid ref’ columns as they were of no use, removed all the hyperlinks and there are more than one Postal codes for some Locations so I kept only one Postal code.</p><p>
+<p align="justify">The data scraped from Wikipedia has to be cleaned. We will drop ‘Dial Code’ and ’OS grid ref’ columns as they were of no use, remove all the hyperlinks and there are more than one Postal codes for some Locations so we are going to keep only one Postal code.</p><p>
 </p><p align="justify">For the next table of average housing prices the data initially looked like this:</p><p>
 </p><p align="center">
   <img src="https://github.com/ckaparakis/Coursera_Capstone/blob/master/pictures/uncleanedavgpr.png" title="hover text" width="350">
 </p>
-<p align="justify">First of all I removed all null values and then get rid of unwanted columns and only kept ‘Area’ and ‘Avg price’ columns. Then ‘Avg Price’ columns contains string so I processed it to make integer by removing pound sign and comma.</p><p>
-</p><p align="justify">After cleaning two tables I performed inner join and merged them. Then by using geocoder library I find the Longitudes and Latitudes of the Location and add a columns of each in my dataframe.</p><p>
-</p><p align="justify">I used python **folium** library to visualize geographic details of London and its boroughs and I created a map of London with boroughs superimposed on top. I used latitude and longitude values to get below visual:</p><p>
+<p align="justify">First of all we will remove all null values and then get rid of unwanted columns and only kept ‘Area’ and ‘Avg price’ columns. Then ‘Avg Price’ columns contains string so we will process it to make it an integer by removing pound sign and comma.</p><p>
+</p><p align="justify">After cleaning two tables we will perform inner join and merge them. Then by using geocoder library we can find the Longitudes and Latitudes of the Location and add a column of each in my dataframe.</p><p>
+</p><p align="justify">We will use python **folium** library to visualize geographic details of London and its boroughs and create a map of London with boroughs superimposed on top. Latitude and longitude values were used to get the below visual:</p><p>
 </p><p align="center">
   <img src="https://github.com/ckaparakis/Coursera_Capstone/blob/master/pictures/map1.png" title="hover text" width="350">
 </p>
-<p align="justify">I utilized the Foursquare API to explore the boroughs and segment them. I designed the limit as 100 venue and the radius 500 meter for each borough from their given latitude and longitude information. Here is the first five rows of the list **london_venues** with the columns **Neighborhood**, **Neighborhood Latitude** and **Neighborhood Longitude** coming from our earlier dataset and **name**, **category**, **latitude** and **longitude** from Foursquare API.</p><p>
+<p align="justify">By utilizing the Foursquare API we will explore the boroughs and segment them. We set the limit as 100 venues and the radius as 500 meter for each borough from their given latitude and longitude information. Here is the first five rows of the list **london_venues** with the columns **Neighborhood**, **Neighborhood Latitude** and **Neighborhood Longitude** coming from our earlier dataset and **name**, **category**, **latitude** and **longitude** from Foursquare API.</p><p>
 </p><p align="justify">By getting the number of venues for every Neighborhood, we have the following dataset:</p><p>
 </p><p align="center">
   <img src="https://github.com/ckaparakis/Coursera_Capstone/blob/master/pictures/neighvencount.png" title="hover text" width="350">
@@ -46,9 +46,9 @@
 </p>
 <h2 id="methodology">3. Methodology</h2>
 <h3 id="feature-extraction">3.1. Feature Extraction</h3>
-<p align="justify">For feature extraction One Hot Encoding is used in terms of categories. Therefore, each feature is a category that belongs to a venue. Each feature becomes binary, this means that 1 means this category is found in the venue and 0 means the opposite. Then, all the venues are grouped by the neighborhoods, computing at the same time the mean. This will give us a venue for each row and each column will contain the frequency of occurrence of that particular category.</p>
+<p align="justify">For feature extraction One Hot Encoding is used in terms of categories. Therefore, each feature is a category that belongs to a venue. Each feature becomes binary, this means that 1 means this category is found in the venue and 0 means the opposite. Then, all the venues are grouped by the boroughs, computing at the same time the mean. This will give us a venue for each row and each column will contain the frequency of occurrence of that particular category.</p>
 <h3 id="unsupervised-learning">3.2. Unsupervised Learning</h3>
-<p align="justify">The purpose of doing unsupervised learning in this case is to find similarities between neighborhoods. For this reason we will implement a clustering algorithm, specifically a K-Means algorithm due to its simplicity and its approach in finding similarities and patterns. </p>
+<p align="justify">The purpose of doing unsupervised learning in this case is to find similarities between boroughs. For this reason we will implement a clustering algorithm, specifically a K-Means algorithm due to its simplicity and its approach in finding similarities and patterns. </p>
 <ul>
 <li><strong>K-Means:</strong></li>
 </ul>
@@ -62,7 +62,7 @@
 </p><p align="center">
   <img src="https://github.com/ckaparakis/Coursera_Capstone/blob/master/pictures/elbow.png" title="hover text" width="350">
 </p>
-<p align="justify">As it is expected, the MSE decreases over the number of clusters. The elbow method here is implemented in order to select the appropriate number of groups. In this case, it is possible to see that the elbow is found more or less around 5. The MSE found below this number shows little changes rather than big ones. Finally, once the number of clusters is fixed, the clustering algorithm is repeated through samples and each borough is labeled according to the clusters found.</p>
+<p align="justify">As it is expected, the MSE decreases over the number of clusters. The elbow method here is implemented in order to select the appropriate number of groups. In this case, it is possible to see that the elbow is found around 5. The MSE found below this number shows little changes rather than big ones. Finally, once the number of clusters is fixed, the clustering algorithm is repeated through samples and each borough is labeled according to the clusters found.</p>
 <h2 id="results">4. Results</h2>
 <p align="justify"> By choosing k=5 and running the algorithm we now have cluster labels for every borough. After examining each cluster we can see every one of them is different and usually tend to have different popular venues.  We can label them as:</p><p>
 </p><ol>
