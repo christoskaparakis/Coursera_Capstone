@@ -56,7 +56,7 @@
 </p><p>This algorithm creates clusters within the data and the main objective function is to minimize the data dispersion for each cluster. Thus, each group represents a set of data with a pattern inside the muldimensional features. </p>
 <p>In the following figure there is an example of how a K-Means algorithm works.</p>
 <p align="center">
-  <img src="https://cdn-images-1.medium.com/max/1600/1*tWaaZX75oumVwBMcKN-eHA.png" title="hover text" width="350">
+  <img src="https://github.com/ckaparakis/Coursera_Capstone/blob/master/pictures/kmeans.png" title="hover text" width="350">
 </p>
 <p align="justify">In order for this to work we have to input the number of the clusters.  For this reason, the elbow method is implemented. A graph comparing MSE vs number of clusters is created as shown below:
 </p><p align="center">
