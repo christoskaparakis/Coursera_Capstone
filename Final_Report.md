@@ -1,8 +1,5 @@
 ---
 
-
----
-
 <h1 id="p-aligncenter-real-estate-prices--venues-data-analysis-of-london-p"><p align="center"> Real Estate Prices &amp; Venues Data Analysis of London </p></h1>
 <h3 id="p-aligncenter-author-christos-kaparakisp"><p align="center"> Author: Christos Kaparakis</p></h3>
 <h2 id="introduction">1. Introduction</h2>
