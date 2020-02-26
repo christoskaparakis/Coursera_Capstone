@@ -3,7 +3,7 @@
 
 ---
 
-<h1 id="p-aligncenter-the-battle-of-the-neighborhoodsp"><p align="center"> The Battle of the Neighborhoods</p></h1>
+<h1 id="p-aligncenter-the-battle-of-the-neighborhoods-p"><p align="center"> The Battle of the Neighborhoods </p></h1>
 <h3 id="p-aligncenter-author-christos-kaparakisp"><p align="center"> Author: Christos Kaparakis</p></h3>
 <h2 id="introduction">1. Introduction</h2>
 <p align="justify">Recently, Machine Learning (ML) algorithms are widely used in the study of data instead of traditional statistics. ML algorithms bring advantages because they offer solutions to problems related to the big quantities of data and set fewer constraints than traditional statistics. In particular, unsupervised learning algorithms are used to find patterns in data in terms of similarity between samples. Depending on the pattern within the data, different algorithms are used. For non-convex data it is used Density-Based Spatial Clustering (DBScan). On the other hand, for convex data it is used a well known algorithm as K-Means. </p>
